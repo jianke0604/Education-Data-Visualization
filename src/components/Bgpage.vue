@@ -1,7 +1,6 @@
 <template>
-    <div class="bgpage">
+    <!-- <div class="bgpage">
         <Header></Header>
-        <!-- 用两个box作为示例，具体使用请自行更改 -->
         <div>
             <div class="container">
                 <div class="box">
@@ -40,18 +39,23 @@
             </div>
             
         </div>
-    </div>
+    </div> -->
     <div id="secondpart" style="width: 100%; height: 600px;"></div>
+    <div id="app">
+    <Scatter3DChart style="width: 100%; height: 500px;"></Scatter3DChart>
+  </div>
 </template>
 
 <script>
+import Scatter3DChart from './Scatter3DChart.vue';
 import Header from './Header.vue'
 import Viewbox from './viewbox/Viewbox.vue'
 import * as echarts from 'echarts'
 export default {
     components: {
         Header,
-        Viewbox
+        Viewbox,
+        Scatter3DChart
     },
     data() {
         return {
@@ -69,7 +73,7 @@ export default {
             this.data_parse();
             const mapping = {'midnight': '凌晨', 'day': '白天', 'night': '夜晚'};
             var chartDom = document.getElementById('secondpart');
-            console.log(chartDom)
+            // console.log(chartDom)
             var myChart = echarts.init(chartDom);
             var option;
             // const minVal = this.data.reduce((min, val) => Math.min(min, val[1]), Infinity) * 100;
@@ -83,7 +87,7 @@ export default {
             let data1 = this.data.filter((_, index) => index % 3 === 0);
             let data2 = this.data.filter((_, index) => index % 3 === 1);
             let data3 = this.data.filter((_, index) => index % 3 === 2);
-            console.log(data1);
+            // console.log(data1);
             option = {
             animation: false,
             legend: {
@@ -217,7 +221,7 @@ export default {
                 this.data[i].splice(0, 3, `${year}-${month}-${day}`);
                 // this.data[i][0] = new Date(this.data[i][0]);
             }
-            console.log(this.data);
+            // console.log(this.data);
         }
     }
 
@@ -238,5 +242,13 @@ export default {
     flex: 1; /* 每个子元素占据相等的空间 */
     height: 300px;
     margin: 10px;
+}
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
 }
 </style>

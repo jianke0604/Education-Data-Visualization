@@ -47,6 +47,9 @@
     <div style="width: 100%; height: 600px;">
     <ECharts3D />
     </div>
+    <div>
+    <DateHeatMap />
+    </div>
 </template>
 
 <script>
@@ -54,13 +57,15 @@ import ECharts3D from './ECharts3D.vue';
 import zoom2D from './zoom2D.vue';
 import Header from './Header.vue'
 import Viewbox from './viewbox/Viewbox.vue'
+import DateHeatMap from './DateHeatMap.vue';
 export default {
     components: {
-        Header,
-        Viewbox,
-        ECharts3D,
-        zoom2D
-    },
+    Header,
+    Viewbox,
+    ECharts3D,
+    zoom2D,
+    DateHeatMap
+},
     data() {
         return {
             subTitle: "子标题"

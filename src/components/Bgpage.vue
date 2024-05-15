@@ -41,13 +41,13 @@
         </div>
     </div> -->
     <div id="secondpart" style="width: 100%; height: 600px;"></div>
-    <div id="app">
-    <Scatter3DChart style="width: 100%; height: 500px;"></Scatter3DChart>
-  </div>
+    <div style="width: 100%; height: 600px;">
+    <ECharts3D />
+    </div>
 </template>
 
 <script>
-import Scatter3DChart from './Scatter3DChart.vue';
+import ECharts3D from './ECharts3D.vue';
 import Header from './Header.vue'
 import Viewbox from './viewbox/Viewbox.vue'
 import * as echarts from 'echarts'
@@ -55,7 +55,7 @@ export default {
     components: {
         Header,
         Viewbox,
-        Scatter3DChart
+        ECharts3D
     },
     data() {
         return {
@@ -243,12 +243,5 @@ export default {
     height: 300px;
     margin: 10px;
 }
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>

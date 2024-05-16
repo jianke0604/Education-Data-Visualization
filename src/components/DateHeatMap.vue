@@ -13,23 +13,22 @@ export default {
     return {
       submitChart: null,
       submitOption: null,
+      data: [],
+      knowledge: "total",
     };
   },
   mounted() {
     this.submitChart = echarts.init(document.getElementById("submit"));
 
     document.getElementById("select").addEventListener("change", (event) => {
-      fetch("../../data/dateheatmap.json")
-        .then((response) => response.json())
-        .then((data) => {
-          this.draw(data, event.target.value);
-        });
+      this.draw(event.target.value);
     });
 
     fetch("../../data/dateheatmap.json")
       .then((response) => response.json())
       .then((data) => {
-        this.draw(data, 'total');
+        this.data = data;
+        this.draw('total');
         for (let key in data[0]) {
           if (key === 'date') continue;
           var option = document.createElement("option");
@@ -40,18 +39,18 @@ export default {
       });
   },
   methods: {
-    draw(original_data, knowledge) {
+    draw(knowledge) {
 
       var data = [];
-      for (let i = 0; i < original_data.length; i++) {
-        data.push([original_data[i].date, original_data[i][knowledge]]);
+      for (let i = 0; i < this.data.length; i++) {
+        data.push([this.data[i].date, this.data[i][knowledge]]);
       }
 
-      var start_date = original_data[0].date;
-      var end_date = original_data[original_data.length - 1].date;
+      var start_date = this.data[0].date;
+      var end_date = this.data[this.data.length - 1].date;
       var submit_max_value = Math.max.apply(
         null,
-        original_data.map(function (item) {
+        this.data.map(function (item) {
           return item[knowledge];
         })
       );

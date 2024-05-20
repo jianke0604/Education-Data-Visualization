@@ -158,7 +158,7 @@ export default {
             
             let option1={
                 title:{
-                    text: "子知识点"+(knowledge[0].toUpperCase())+(subknowledge.replace(knowledge+"_","")[0].toUpperCase())+"各月答题人数"
+                    text: "子知识点"+(knowledge[0].toUpperCase())+(subknowledge.replace(knowledge+"_","")[0].toUpperCase())+"答题人数变化"
                 },
                 tooltip: {
                     trigger: 'axis'
@@ -176,7 +176,7 @@ export default {
                 xAxis: {
                     type: 'category',
                     boundaryGap: false,
-                    data: ['2023-9', '2023-10', '2023-11', '2023-12', '2024-1']
+                    data: ['9月上',"9月中","9月下",'10月上',"10月中","10月下",'11月上',"11月中","11月下",'12月上',"12月中","12月下","1月上"]
                 },
                 yAxis: {
                     type: 'value'
@@ -213,7 +213,7 @@ export default {
                 xAxis: {
                     type: 'category',
                     boundaryGap: false,
-                    data: ['2023-9', '2023-10', '2023-11', '2023-12', '2024-1']
+                    data: ['9月上',"9月中","9月下",'10月上',"10月中","10月下",'11月上',"11月中","11月下",'12月上',"12月中","12月下","1月上"]
                 },
                 yAxis: {
                     type: 'value'
@@ -245,7 +245,7 @@ export default {
             console.log(this.otherData["knowledges"][knowledge]["sub_knowledges"][subknowledge]["participants"])
         },
         loadOtherData(){
-            fetch('../../data/forSB.json')
+            fetch('../../data/forSB_v2.json')
             .then(response=>response.json())
             .then(data=>{
                 this.otherData=data;
@@ -274,7 +274,7 @@ export default {
                 xAxis: {
                     type: 'category',
                     boundaryGap: false,
-                    data: ['2023-9', '2023-10', '2023-11', '2023-12', '2024-1']
+                    data: ['9月上',"9月中","9月下",'10月上',"10月中","10月下",'11月上',"11月中","11月下",'12月上',"12月中","12月下","1月上"]
                 },
                 yAxis: {
                     type: 'value'
@@ -308,7 +308,7 @@ export default {
                     xAxis: {
                         type: 'category',
                         boundaryGap: false,
-                        data: ['2023-9', '2023-10', '2023-11', '2023-12', '2024-1']
+                        data: ['9月上',"9月中","9月下",'10月上',"10月中","10月下",'11月上',"11月中","11月下",'12月上',"12月中","12月下","1月上"]
                     },
                     yAxis: {
                         type: 'value'

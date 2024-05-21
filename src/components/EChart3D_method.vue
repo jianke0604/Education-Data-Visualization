@@ -8,6 +8,7 @@ import { Scatter3DChart } from 'echarts-gl/charts';
 import { TooltipComponent, VisualMapComponent } from 'echarts/components';
 import { CanvasRenderer } from 'echarts/renderers';
 import { Grid3DComponent } from 'echarts-gl/components';
+
 export default {
   name: 'ECharts3D',
   mounted() {
@@ -31,7 +32,8 @@ export default {
         { name: 'id', index: 0 },
         { name: 'total_answers', index: 1 },
         { name: 'correct_rate', index: 2 },
-        { name: 'average_time', index: 3 }
+        { name: 'average_time', index: 3 },
+        { name: 'most_common_method', index: 4 }
       ];
 
       var fieldIndices = schema.reduce(function (obj, item) {
@@ -43,7 +45,7 @@ export default {
         xAxis3D: 'total_answers',
         yAxis3D: 'correct_rate',
         zAxis3D: 'average_time_seconds',
-        color: 'correct_rate',
+        color: 'most_common_method',
         symbolSize: 'total_answers'
       };
 
@@ -69,76 +71,55 @@ export default {
         return `${hours}:${min}:00 - ${hours1}:${min1}:00`;
       }
 
-      function getMaxOnExtent(data) {
-        var colorMax = -Infinity;
-        var symbolSizeMax = -Infinity;
-        for (var i = 0; i < data.length; i++) {
-          var item = data[i];
-          var colorVal = item[fieldIndices[config.color]];
-          var symbolSizeVal = item[fieldIndices[config.symbolSize]];
-          colorMax = Math.max(colorVal, colorMax);
-          symbolSizeMax = Math.max(symbolSizeVal, symbolSizeMax);
-        }
-        return {
-          color: colorMax,
-          symbolSize: symbolSizeMax
-        };
-      }
-
-      fetch('../../data/student_statistics.json')
+      // Fetch data and initialize the chart
+      fetch('../../data/student_statistics1.json')
         .then(response => response.json())
         .then(data => {
+          // Create a set to store unique programming languages
+          const programmingLanguagesSet = new Set();
+
           var processedData = Object.keys(data).map(id => {
             var item = data[id];
+            // Add the most_common_method to the set
+            programmingLanguagesSet.add(item.most_common_method);
             return [
               id,
               item.total_answers,
               item.correct_rate,
-              parseTimeToSeconds(item.average_time)
+              parseTimeToSeconds(item.average_time),
+              item.most_common_method
             ];
           });
 
-          var max = getMaxOnExtent(processedData);
-          console.log(max.color);
+          // Convert the set to an array and map colors to each programming language
+          const programmingLanguagesArray = Array.from(programmingLanguagesSet);
+          const colorPalette = [
+            '#1710c0', '#0b9df0', '#00fea8', '#00ff0d', '#f5f811', '#f09a09', '#fe0300',
+            '#800080', '#ff1493', '#00ced1', '#8b4513', '#7fffd4', '#228b22', '#daa520'
+          ];
+          const methodToColor = {};
+          programmingLanguagesArray.forEach((method, index) => {
+            methodToColor[method] = colorPalette[index % colorPalette.length];
+          });
 
           myChart.setOption({
             tooltip: {
               formatter: function (params) {
-                // console.log(params);
                 return `ID: ${params.value[3]}<br>
                         Total Answers: ${params.value[0]}<br>
                         Correct Rate: ${params.value[1]}<br>
-                        Peak Time: ${formatSecondsToTime(params.value[2])}`;
+                        Peak Time: ${formatSecondsToTime(params.value[2])}<br>
+                        Programming Language: ${params.value[4]}`;
               }
             },
             visualMap: [
               {
                 top: 10,
                 calculable: true,
-                dimension: 1,
-                max: max.color,
+                dimension: 4,
+                categories: programmingLanguagesArray,
                 inRange: {
-                  color: [
-                    '#1710c0',
-                    '#0b9df0',
-                    '#00fea8',
-                    '#00ff0d',
-                    '#f5f811',
-                    '#f09a09',
-                    '#fe0300'
-                  ]
-                },
-                textStyle: {
-                  color: '#fff'
-                }
-              },
-              {
-                bottom: 10,
-                calculable: true,
-                dimension: 1,
-                max: max.symbolSize,
-                inRange: {
-                  symbolSize: [10, 40]
+                  color: programmingLanguagesArray.map(method => methodToColor[method])
                 },
                 textStyle: {
                   color: '#fff'
@@ -185,18 +166,16 @@ export default {
                   'total_answers',
                   'correct_rate',
                   'average_time',
-                  'id' // 添加id到dimensions
-                  // 'correct_rate',
-                  // 'total_answers'
+                  'id',
+                  'most_common_method'
                 ],
-                data: processedData.map(function (item) {
+                data: processedData.map(item => {
                   return [
                     item[fieldIndices['total_answers']],
                     item[fieldIndices['correct_rate']],
                     item[fieldIndices['average_time']],
-                    item[fieldIndices['id']] // 添加id到data
-                    // item[fieldIndices['correct_rate']],
-                    // item[fieldIndices['total_answers']]
+                    item[fieldIndices['id']],
+                    item[fieldIndices['most_common_method']]
                   ];
                 }),
                 symbolSize: 12,

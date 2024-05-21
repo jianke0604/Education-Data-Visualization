@@ -8,6 +8,9 @@ question_student_dict = {}
 ans = {}
 class_id = [i + 1 for i in range(15)]
 student_id = []
+question_submit = {}
+question_pass = {}
+question_pass_rate = {}
 
 
 def init():
@@ -40,6 +43,15 @@ def deal():
                 else:
                     question_student_dict[row['title_ID']] = [row['student_ID']]
 
+                if row['title_ID'] in question_pass:
+                    question_pass[row['title_ID']] += 1
+                else:
+                    question_pass[row['title_ID']] = 1
+            if row['title_ID'] in question_submit:
+                question_submit[row['title_ID']] += 1
+            else:
+                question_submit[row['title_ID']] = 1
+
 if __name__ == '__main__':
     init()
     deal()
@@ -49,6 +61,15 @@ if __name__ == '__main__':
         else:
             ans[q] = 0
 
-    with open('../data/pass_rate.json', 'w') as f:
+    for q in question:
+        if q in question_pass:
+            question_pass_rate[q] = question_pass[q] / question_submit[q]
+        else:
+            question_pass_rate[q] = 0
+
+    with open('../data/student_pass_rate_per_question.json', 'w') as f:
         json.dump(ans, f, indent=4)
+
+    with open('../data/question_pass_rate.json', 'w') as f:
+        json.dump(question_pass_rate, f, indent=4)
 

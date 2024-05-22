@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Scatter Plot with ECharts</title>
+    <!-- 引入 ECharts 库 -->
+    <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <!-- 用于放置图表的容器 -->
+    <div id="main" style="width: 800px;height:600px;"></div>
+
+    <script type="text/javascript">
+        // 初始化 ECharts 实例
+        var chartDom = document.getElementById('main');
+        var myChart = echarts.init(chartDom);
+        var option;
+
+        // 从JSON文件中获取数据并绘制图表
+        async function fetchDataAndRenderChart() {
+            try {
+                // 获取数据
+                const [inconsistentQuestionsResponse, studentStatisticsResponse] = await Promise.all([
+                    axios.get('students_inconsistent_questions.json'),
+                    axios.get('student_statistics.json')
+                ]);
+
+                const inconsistentQuestions = inconsistentQuestionsResponse.data;
+                const studentStatistics = studentStatisticsResponse.data;
+
+                // 处理数据
+                let data = [];
+                let minCorrectRatePerCount = {};
+
+                // 找出每个count的最小correct_rate
+                for (let id in inconsistentQuestions) {
+                    if (studentStatistics[id]) {
+                        let count = inconsistentQuestions[id].count;
+                        let correctRate = studentStatistics[id].correct_rate;
+
+                        if (!(count in minCorrectRatePerCount) || correctRate < minCorrectRatePerCount[count].correctRate) {
+                            minCorrectRatePerCount[count] = { correctRate: correctRate, id: id };
+                        }
+                    }
+                }
+
+                // 生成数据点
+                for (let id in inconsistentQuestions) {
+                    if (studentStatistics[id]) {
+                        let count = inconsistentQuestions[id].count;
+                        let correctRate = studentStatistics[id].correct_rate;
+                        let color = 'blue';
+
+                        // 检查当前点是否是该count的最小correct_rate
+                        if (minCorrectRatePerCount[count].id === id) {
+                            color = 'red';
+                        }
+
+                        data.push({
+                            value: [count, correctRate],
+                            itemStyle: {
+                                color: color
+                            },
+                            id: id
+                        });
+                    }
+                }
+
+                // 设置图表的选项
+                option = {
+                    title: {
+                        text: 'Scatter Plot of Count vs Correct Rate',
+                    },
+                    tooltip: {
+                        trigger: 'item',
+                        formatter: function (params) {
+                            return 'ID: ' + params.data.id + '<br/>Count: ' + params.data.value[0] + '<br/>Correct Rate: ' + params.data.value[1];
+                        }
+                    },
+                    xAxis: {
+                        name: 'Count',
+                        type: 'value'
+                    },
+                    yAxis: {
+                        name: 'Correct Rate',
+                        type: 'value'
+                    },
+                    series: [{
+                        symbolSize: 10,
+                        data: data,
+                        type: 'scatter'
+                    }]
+                };
+
+                // 使用指定的配置项和数据显示图表
+                myChart.setOption(option);
+
+            } catch (error) {
+                console.error('Error fetching or processing data:', error);
+            }
+        }
+
+        // 调用函数以获取数据并绘制图表
+        fetchDataAndRenderChart();
+    </script>
+</body>
+</html>

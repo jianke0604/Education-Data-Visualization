@@ -53,6 +53,9 @@
     <div id="sb_container" style="width: 100%; height: 600px;">
         <SunBurst/>
     </div>
+    <div>
+        <Diff />
+    </div>
 </template>
 
 <script>
@@ -62,6 +65,7 @@ import Header from './Header.vue'
 import Viewbox from './viewbox/Viewbox.vue'
 import DateHeatMap from './DateHeatMap.vue';
 import SunBurst from './SunBurst.vue';
+import Diff from './question_difficulty.vue';
 export default {
     components: {
     Header,
@@ -69,7 +73,8 @@ export default {
     ECharts3D,
     zoom2D,
     DateHeatMap,
-    SunBurst
+    SunBurst,
+    Diff
 },
     data() {
         return {

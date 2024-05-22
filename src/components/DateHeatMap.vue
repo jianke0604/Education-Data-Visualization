@@ -1,6 +1,5 @@
 <template>
   <div id="submit" style="height: 200px; width: 100%"></div>
-  <div id="correct" style="height: 200px; width: 100%"></div>
   <select id="select" v-model="knowledge"></select>
 </template>
 

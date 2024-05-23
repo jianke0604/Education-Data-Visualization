@@ -45,11 +45,12 @@ export default {
 
                             option && myChart.setOption(option);      
             };
-            if (document.readyState === 'complete') {   
-                draw();
-            } else {
-                window.onload = draw;
-            }
+            // if (document.readyState === 'complete') {   
+            //     draw();
+            // } else {
+            //     window.onload = draw;
+            // }
+            draw();
         },
         data_parse() {
             fetch('../../data/q2_zoom_chart.json')

@@ -56,6 +56,9 @@
     <div>
         <Diff />
     </div>
+    <div>
+        <Error />
+    </div>
 </template>
 
 <script>
@@ -66,6 +69,7 @@ import Viewbox from './viewbox/Viewbox.vue'
 import DateHeatMap from './DateHeatMap.vue';
 import SunBurst from './SunBurst.vue';
 import Diff from './question_difficulty.vue';
+import Error from './t4_error.vue';
 export default {
     components: {
     Header,
@@ -74,7 +78,8 @@ export default {
     zoom2D,
     DateHeatMap,
     SunBurst,
-    Diff
+    Diff,
+    Error
 },
     data() {
         return {

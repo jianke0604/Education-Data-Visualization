@@ -1,0 +1,192 @@
+{
+    "Question_5fgqjSBwTPG7KUV3it6O": {
+        "error": 74.4186046511628,
+        "difficulty": 28.874494738065216,
+        "mul": 2148.7996084141555
+    },
+    "Question_n2BTxIGw1Mc3Zo6RLdUe": {
+        "error": 65.814696485623,
+        "difficulty": 27.68122194086423,
+        "mul": 1821.8312203891476
+    },
+    "Question_YWXHr4G6Cl7bEm9iF2kQ": {
+        "error": 57.9646017699115,
+        "difficulty": 29.146649595407265,
+        "mul": 1689.4739367249344
+    },
+    "Question_FNg8X9v5zcbB1tQrxHR3": {
+        "error": 53.99188092016238,
+        "difficulty": 30.47734030674378,
+        "mul": 1645.5289286049756
+    },
+    "Question_q7OpB2zCMmW9wS8uNt3H": {
+        "error": 76.13227893601724,
+        "difficulty": 21.520008686202186,
+        "mul": 1638.3673040034591
+    },
+    "Question_3MwAFlmNO8EKrpY5zjUd": {
+        "error": 68.796992481203,
+        "difficulty": 22.880000869108407,
+        "mul": 1574.0752477619696
+    },
+    "Question_EhVPdmlB31M8WKGqL0wc": {
+        "error": 56.475300400534046,
+        "difficulty": 27.245954504829196,
+        "mul": 1538.7234653595128
+    },
+    "Question_x2Fy7rZ3SwYl9jMQkpOD": {
+        "error": 58.417085427135675,
+        "difficulty": 26.152289417842052,
+        "mul": 1527.7405250372556
+    },
+    "Question_xqlJkmRaP0otZcX4fK3W": {
+        "error": 59.23295454545454,
+        "difficulty": 25.223317417722217,
+        "mul": 1494.051614089512
+    },
+    "Question_Az73sM0rHfWVKuc4X2kL": {
+        "error": 55.71808510638297,
+        "difficulty": 26.533967493531186,
+        "mul": 1478.4218590145701
+    },
+    "Question_BW0ItEaymH3TkD6S15JF": {
+        "error": 58.34428383705651,
+        "difficulty": 24.0290831748382,
+        "mul": 1401.9596490969989
+    },
+    "Question_X3wF8QlTyi4mZkDp9Kae": {
+        "error": 49.48905109489051,
+        "difficulty": 28.25557018983932,
+        "mul": 1398.3413568402234
+    },
+    "Question_3oPyUzDmQtcMfLpGZ0jW": {
+        "error": 65.60574948665298,
+        "difficulty": 21.299980860121487,
+        "mul": 1397.4012083796333
+    },
+    "Question_h7pXNg80nJbw1C4kAPRm": {
+        "error": 56.417112299465245,
+        "difficulty": 24.603856407279526,
+        "mul": 1388.0785299294064
+    },
+    "Question_fZrP3FJ4ebUogW9V7taS": {
+        "error": 62.96743063932448,
+        "difficulty": 21.73689279724407,
+        "mul": 1368.716289524898
+    },
+    "Question_62XbhBvJ8NUSnApgDL94": {
+        "error": 51.71339563862928,
+        "difficulty": 26.41491754161945,
+        "mul": 1366.0050815915351
+    },
+    "Question_VgKw8PjY1FR6cm2QI9XW": {
+        "error": 58.95806861499364,
+        "difficulty": 22.756445384691318,
+        "mul": 1341.6760684239862
+    },
+    "Question_pVKXjZn0BkSwYcsa7C31": {
+        "error": 55.7163531114327,
+        "difficulty": 23.976190458019914,
+        "mul": 1335.865893826001
+    },
+    "Question_oCjnFLbIs4Uxwek9rBpu": {
+        "error": 49.11971830985916,
+        "difficulty": 27.012144691397438,
+        "mul": 1326.8289381865995
+    },
+    "Question_QRm48lXxzdP7Tn1WgNOf": {
+        "error": 52.18002812939522,
+        "difficulty": 25.0646947156864,
+        "mul": 1307.87647531922
+    },
+    "Question_s6VmP1G4UbEQWRYHK9Fd": {
+        "error": 49.473684210526315,
+        "difficulty": 26.353342282559062,
+        "mul": 1303.7969339792378
+    },
+    "Question_Mh4CZIsrEfxkP1wXtOYV": {
+        "error": 48.67256637168141,
+        "difficulty": 25.1303378634597,
+        "mul": 1223.1580376020208
+    },
+    "Question_TmKaGvfNoXYq4FZ2JrBu": {
+        "error": 51.223241590214066,
+        "difficulty": 23.537983028207535,
+        "mul": 1205.691791200233
+    },
+    "Question_ZTbD7mxr2OUp8Fz6iNjy": {
+        "error": 43.609022556390975,
+        "difficulty": 27.55588232982949,
+        "mul": 1201.6850940827896
+    },
+    "Question_Jr4Wz5jLqmN01KUwHa7g": {
+        "error": 47.22222222222222,
+        "difficulty": 25.405400948595275,
+        "mul": 1199.6994892392213
+    },
+    "Question_lU2wvHSZq7m43xiVroBc": {
+        "error": 49.13112164296998,
+        "difficulty": 23.80780673713922,
+        "mul": 1169.7042488547072
+    },
+    "Question_Ej5mBw9rsOUKkFycGvz2": {
+        "error": 46.1890243902439,
+        "difficulty": 25.069557859715793,
+        "mul": 1157.9384194350434
+    },
+    "Question_bumGRTJ0c8p4v5D6eHZa": {
+        "error": 43.03571428571429,
+        "difficulty": 26.43828589390246,
+        "mul": 1137.7905179340166
+    },
+    "Question_tgOjrpZLw4RdVzQx85h6": {
+        "error": 44.81546572934973,
+        "difficulty": 24.136141328641692,
+        "mul": 1081.6724145524836
+    },
+    "Question_hZ5wXofebmTlzKB1jNcP": {
+        "error": 33.18872017353579,
+        "difficulty": 30.983011184050966,
+        "mul": 1028.2864883209973
+    },
+    "Question_UXqN1F7G3Sbldz02vZne": {
+        "error": 37.634408602150536,
+        "difficulty": 24.82967447582668,
+        "mul": 934.4501146816492
+    },
+    "Question_7NJzCXUPcvQF4Mkfh9Wr": {
+        "error": 36.400817995910025,
+        "difficulty": 24.760617563757478,
+        "mul": 901.306733404669
+    },
+    "Question_NixCn84GdK2tySa5rB1V": {
+        "error": 34.93449781659388,
+        "difficulty": 25.107754842752804,
+        "mul": 877.1268067337223
+    },
+    "Question_4nHcauCQ0Y6Pm8DgKlLo": {
+        "error": 36.41851106639839,
+        "difficulty": 23.762597565755584,
+        "mul": 865.3984224148411
+    },
+    "Question_x2L7AqbMuTjCwPFy6vNr": {
+        "error": 37.903225806451616,
+        "difficulty": 22.40998420627916,
+        "mul": 849.4106916896133
+    },
+    "Question_6RQj2gF3OeK5AmDvThUV": {
+        "error": 35.13513513513514,
+        "difficulty": 24.074220165096886,
+        "mul": 845.8509787736745
+    },
+    "Question_Ou3f2Wt9BqExm5DpN7Zk": {
+        "error": 32.03463203463203,
+        "difficulty": 24.863793985540493,
+        "mul": 796.5024913116868
+    },
+    "Question_rvB9mVE6Kbd8jAY4NwPx": {
+        "error": 26.717557251908396,
+        "difficulty": 23.4415684495646,
+        "mul": 626.3014471257717
+    }
+}

@@ -28,11 +28,13 @@
                         :boxb="true"
                     />
                 </div>
-                <div class="box">
+                <div class="box" style="width:60%;">
                     <Viewbox
-                        title="测试子标题"
+                        title="学生提交频率与通过率"
                         :boxb="true"
-                    />
+                    >
+                    <zoom2D />
+                </Viewbox>
                 </div>
             </div>
             
@@ -40,7 +42,7 @@
     </div>
 
     <div>
-        <zoom2D />
+       
     </div>
     <div style="width: 100%; height: 600px;">
     <ECharts3D />

@@ -1,5 +1,5 @@
 <template>
-    <div id="zoom" style="height: 600px; width: 100%;"></div>
+    <div id="zoom" style="height: 330px; width: 100%;"></div>
 </template>
 
 <script>
@@ -472,7 +472,10 @@ export default {
             option = {
             animation: false,
             legend: {
-                data: ['凌晨', '白天', '夜晚']
+                data: ['凌晨', '白天', '夜晚'],
+				textStyle: {
+					color: 'white'
+				}
             },
             tooltip: {
                 show: true,
@@ -499,7 +502,10 @@ export default {
                     formatter: function (value) {
                         // Format the date
                         return echarts.format.formatTime('yyyy-MM-dd', value);
-                    }
+                    },
+					textStyle: {
+						color: 'white'
+					}
                 }
             },
             yAxis: {
@@ -508,7 +514,12 @@ export default {
                 max: 'dataMax',
                 splitLine: {
                 show: true
-                }
+                },
+				axisLabel: {
+					textStyle: {
+						color: 'white'
+					}
+				}
             },
             dataZoom: [
                 {

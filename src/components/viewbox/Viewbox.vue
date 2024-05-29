@@ -25,6 +25,7 @@
             <i class="b-r-line"></i>
         </div>
         <div class="in-title" v-if="title.length > 0">{{ title }}</div>
+        <slot></slot>
     </div>
 </template>
 

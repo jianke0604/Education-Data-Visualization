@@ -1,13 +1,15 @@
 <template>
-    <!-- <div class="bgpage">
+    <div class="bgpage">
         <Header></Header>
         <div>
             <div class="container">
                 <div class="box">
                     <Viewbox
-                        :title="subTitle"
+                        title="日期热力图"
                         :boxb="true"
-                    />
+                    >
+                        <DateHeatMap />
+                    </Viewbox>
                 </div>
                 <div class="box">
                     <Viewbox
@@ -39,7 +41,7 @@
             </div>
             
         </div>
-    </div> -->
+    </div>
 
     <div>
         <zoom2D />
@@ -48,7 +50,6 @@
     <ECharts3D />
     </div>
     <div>
-    <DateHeatMap />
     </div>
     <div id="sb_container" style="width: 100%; height: 600px;">
         <SunBurst/>

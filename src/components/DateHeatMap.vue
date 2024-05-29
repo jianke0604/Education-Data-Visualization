@@ -1,6 +1,14 @@
 <template>
-  <div id="submit" style="height: 200px; width: 100%"></div>
-  <select id="select" v-model="knowledge"></select>
+  <div style="height: 100%; width: 100%;">
+    <div id="submit" style="height: 80%; width: 100%"></div>
+    <div>
+    <select id="select" v-model="knowledge" style="position: relative; left: 10px;">
+      <!-- 去除第一个key -->
+      <option v-for="(key, index) in knowledges" :key="key" :value="key">{{ key }}</option>
+    </select>
+  </div>
+  </div>
+  
 </template>
 
 <script>
@@ -14,28 +22,48 @@ export default {
       submitOption: null,
       data: [],
       knowledge: "total",
+      knowledges: [
+        "total",
+        "r8S3g",
+        "r8S3g_l0p5viby",
+        "r8S3g_n0m9rsw4",
+        "t5V9e",
+        "t5V9e_e1k6cixp",
+        "m3D1v",
+        "m3D1v_r1d7fr3l",
+        "m3D1v_v3d9is1x",
+        "m3D1v_t0v5ts9h",
+        "y9W5d",
+        "y9W5d_c0w4mj5h",
+        "k4W1c",
+        "k4W1c_h5r6nux7",
+        "s8Y2f",
+        "s8Y2f_v4x8by9j",
+        "y9W5d_p8g6dgtv",
+        "y9W5d_e2j7p95s",
+        "g7R2j",
+        "g7R2j_e0v1yls8",
+        "g7R2j_j1g8gd3v",
+        "b3C9s",
+        "b3C9s_l4z6od7y",
+        "b3C9s_j0v1yls8"
+      ],
     };
   },
   mounted() {
     this.submitChart = echarts.init(document.getElementById("submit"));
-
-    document.getElementById("select").addEventListener("change", (event) => {
-      this.draw(event.target.value);
-    });
 
     fetch("../../data/dateheatmap.json")
       .then((response) => response.json())
       .then((data) => {
         this.data = data;
         this.draw('total');
-        for (let key in data[0]) {
-          if (key === 'date') continue;
-          var option = document.createElement("option");
-          option.text = key;
-          option.value = key;
-          document.getElementById("select").appendChild(option);
-        }
       });
+  },
+  watch: {
+    knowledge: function(newKnowledge) {
+      this.draw(newKnowledge);
+    }
   },
   methods: {
     draw(knowledge) {
@@ -66,23 +94,15 @@ export default {
           left: "center",
           top: 0,
           textStyle: {
-            color: "black",
+            color: "white",
             fontSize: 20,
-          },
-        },
-        visualMap: {
-          show: false,
-          min: 0,
-          max: submit_max_value,
-          inRange: {
-            color: ["white", "green"],
           },
         },
         calendar: {
           top: 40,
-          left: 100,
+          left: 50,
           range: [start_date, end_date],
-          cellSize: [20, 20],
+          cellSize: [18, 18],
           splitLine: {
             show: true,
             lineStyle: {
@@ -93,13 +113,36 @@ export default {
           },
           dayLabel: {
             nameMap: ["", "Mon", "", "Wen", "", "Fri", ""],
+            color: "white",
+          },
+          monthLabel: {
+            show: true,
+            color: "white",
           },
           yearLabel: {
             show: false,
           },
           itemStyle: {
+            color: "rgba(0, 0, 0, 0.0)",
             borderWidth: 5,
-            borderColor: "rgba(0, 0, 0, 0)",
+            borderColor: "rgba(0, 0, 0, 0.0)",
+          },
+        },
+        visualMap: {
+          min: 0,
+          max: submit_max_value,
+          calculable: false,
+          orient: "horizontal",
+          left: 'center',
+          bottom: 0,
+          inRange: {
+            color: ["rgba(0, 255, 0, 0.0)", "rgba(0, 255, 0, 0.8)"],
+          },
+          outOfRange: {
+            color: ["rgba(0, 0, 0, 0.0)"],
+          },
+          textStyle: {
+            color: "white",
           },
         },
         series: {
@@ -127,20 +170,9 @@ export default {
             );
           },
         },
-        visualMap: {
-          min: 0,
-          max: submit_max_value,
-          calculable: true,
-          orient: "vertical",
-          left: 0,
-          top: 40,
-          inRange: {
-            color: ["white", "green"],
-          },
-        },
       };
 
-      this.submitOption && this.submitChart.setOption(this.submitOption);
+      this.submitChart.setOption(this.submitOption);
     },
   },
 };

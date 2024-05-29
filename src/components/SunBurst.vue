@@ -71,13 +71,13 @@ export default {
                     let childrens=[];
                     for(let sub_knowledge in this.knowledges[knowledge]){
                         childrens.push({
-                            name:"子知识点"+(knowledge[0].toUpperCase())+(sub_knowledge.replace(knowledge+"_","")[0].toUpperCase())+":共"+this.knowledges[knowledge][sub_knowledge].length+"题",
+                            name:"子知识"+(knowledge[0].toUpperCase())+(sub_knowledge.replace(knowledge+"_","")[0].toUpperCase()),
                             value:this.knowledges[knowledge][sub_knowledge].length,
                             old_name:sub_knowledge
                         })
                     }
                     this.drawData.push({
-                        name:"知识点"+(knowledge[0].toUpperCase()),
+                        name:"知识"+(knowledge[0].toUpperCase()),
                         children:childrens,
                         old_name:knowledge
                     })
@@ -158,7 +158,13 @@ export default {
             
             let option1={
                 title:{
-                    text: "子知识点"+(knowledge[0].toUpperCase())+(subknowledge.replace(knowledge+"_","")[0].toUpperCase())+"答题人数变化"
+                    text: "子知识点"+(knowledge[0].toUpperCase())+(subknowledge.replace(knowledge+"_","")[0].toUpperCase())+"答题人数变化",
+                    top:'0%',
+                    textStyle: {
+                        color: '#ffffff', // 设置标题颜色，例如红色
+                        fontSize: 20, // 可选，设置字体大小
+                        fontWeight: 'bold' // 可选，设置字体粗细
+                     }
                 },
                 tooltip: {
                     trigger: 'axis'
@@ -168,8 +174,8 @@ export default {
                 },
                 grid: {
                     left: '3%',
-                    right: '4%',
-                    bottom: '3%',
+                    right: '7%',
+                    bottom: '5%',
                     containLabel: true
                 },
                 
@@ -195,18 +201,30 @@ export default {
 
             let option2 = {
                 title: {
-                    text: '准确率'
+                    text: '正确率',
+                    top:'0%',
+                    textStyle: {
+                        color: '#ffffff', // 设置标题颜色，例如红色
+                        fontSize: 20, // 可选，设置字体大小
+                        fontWeight: 'bold' // 可选，设置字体粗细
+                     }
                 },
                 tooltip: {
                     trigger: 'axis'
                 },
                 legend: {
-                    data: ['全部题目', "子知识点"+(knowledge[0].toUpperCase())+(subknowledge.replace(knowledge+"_","")[0].toUpperCase()), "知识点"+(knowledge[0].toUpperCase())]
+                    data: ['全部题目', "子知识点"+(knowledge[0].toUpperCase())+(subknowledge.replace(knowledge+"_","")[0].toUpperCase()), "知识点"+(knowledge[0].toUpperCase())],
+                    textStyle: {
+                        color: '#00ff00', // 正常状态下的图例颜色，例如蓝色
+                        fontSize: 10 // 可选，设置字体大小
+                    },
+                    inactiveColor: '#999999' ,
+                    top: '7%',
                 },
                 grid: {
                     left: '3%',
-                    right: '4%',
-                    bottom: '3%',
+                    right: '7%',
+                    bottom: '5%',
                     containLabel: true
                 },
                 
@@ -259,15 +277,21 @@ export default {
             this.myChart2 = echarts.init(document.getElementById('line2_main'));
             let option1 = {
                 title: {
-                    text: '点击旭日图外圈以显示具体数据'
+                    text: '点击旭日图外圈以显示具体数据',
+                    top:'0%',
+                    textStyle: {
+                        color: '#ffffff', // 设置标题颜色，例如红色
+                        fontSize: 16, // 可选，设置字体大小
+                        fontWeight: 'bold' // 可选，设置字体粗细
+                     }
                 },
                 tooltip: {
                     trigger: 'axis'
                 },
                 grid: {
-                    left: '3%',
-                    right: '4%',
-                    bottom: '3%',
+                    left: '5%',
+                    right: '7%',
+                    bottom: '5%',
                     containLabel: true
                 },
                 
@@ -290,7 +314,13 @@ export default {
                 }
                 let option2 = {
                     title: {
-                        text: '点击旭日图外圈以显示数据'
+                        text: '点击旭日图外圈以显示数据',
+                        top:'0%',
+                        textStyle: {
+                            color: '#ffffff', // 设置标题颜色，例如红色
+                            fontSize: 16, // 可选，设置字体大小
+                            fontWeight: 'bold' // 可选，设置字体粗细
+                        }
                     },
                     tooltip: {
                         trigger: 'axis'
@@ -300,8 +330,8 @@ export default {
                     },
                     grid: {
                         left: '3%',
-                        right: '4%',
-                        bottom: '3%',
+                        right: '7%',
+                        bottom: '5%',
                         containLabel: true
                     },
                     

@@ -3,7 +3,7 @@
         <Header></Header>
         <div>
             <div class="container">
-                <div class="box">
+                <div class="box" style="width:40%;">
                     <Viewbox
                         title="日期热力图"
                         :boxb="true"
@@ -11,19 +11,15 @@
                         <DateHeatMap />
                     </Viewbox>
                 </div>
-                <div class="box">
+                <div class="box" style="width:60%;">
                     <Viewbox
-                        :title="subTitle"
-                        :boxb="true"
-                    />
-                </div>
-                <div class="box">
-                    <Viewbox
-                        :title="subTitle"
+                        title="各知识点正确率与人数分布"
                         :boxb="true"
                     >
+                        <SunBurst />
                     </Viewbox>
                 </div>
+                
             </div>
             <div class="container">
                 <div class="box">
@@ -108,9 +104,11 @@ export default {
     display: flex; /* 将容器设置为 flex 容器 */
 }
 .box {
-    flex: 1; /* 每个子元素占据相等的空间 */
-    height: 300px;
+     /* 每个子元素占据相等的空间 */
+    height: 350px;
     margin: 10px;
 }
+
+
 
 </style>

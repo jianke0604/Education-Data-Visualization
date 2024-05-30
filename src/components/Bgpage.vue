@@ -8,7 +8,7 @@
                         title="日期热力图"
                         :boxb="true"
                     >
-                        <DateHeatMap />
+                        <DateHeatMap ref="dateHeatMap"/>
                     </Viewbox>
                 </div>
                 <div class="box" style="width:60%;">
@@ -16,7 +16,7 @@
                         title="各知识点正确率与人数分布"
                         :boxb="true"
                     >
-                        <SunBurst />
+                        <SunBurst @changeDateHeatMap="changeDateHeatMap"/>
                     </Viewbox>
                 </div>
                 
@@ -121,7 +121,9 @@ export default {
         
     },
     methods: {
-        
+        changeDateHeatMap(knowledge) {
+            this.$refs.dateHeatMap.draw(knowledge);
+        }
     }
 
 }

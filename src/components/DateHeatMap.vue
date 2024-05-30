@@ -1,25 +1,18 @@
 <template>
   <div style="height: 100%; width: 100%;">
     <div id="submit" style="height: 80%; width: 100%"></div>
-    <div>
-    <select id="select" v-model="knowledge" style="position: relative; left: 10px;">
-      <!-- 去除第一个key -->
-      <option v-for="(key, index) in knowledges" :key="key" :value="key">{{ key }}</option>
-    </select>
-  </div>
+
   </div>
   
 </template>
 
 <script>
-import * as echarts from "echarts";
+import * as echarts from "echarts/core";
 
 export default {
   name: "DateHeatMap",
   data() {
     return {
-      submitChart: null,
-      submitOption: null,
       data: [],
       knowledge: "total",
       knowledges: [
@@ -51,8 +44,6 @@ export default {
     };
   },
   mounted() {
-    this.submitChart = echarts.init(document.getElementById("submit"));
-
     fetch("../../data/dateheatmap.json")
       .then((response) => response.json())
       .then((data) => {
@@ -60,13 +51,11 @@ export default {
         this.draw('total');
       });
   },
-  watch: {
-    knowledge: function(newKnowledge) {
-      this.draw(newKnowledge);
-    }
-  },
   methods: {
     draw(knowledge) {
+      var submitChart = echarts.init(document.getElementById("submit"));
+
+      submitChart.clear();
 
       var data = [];
       for (let i = 0; i < this.data.length; i++) {
@@ -76,9 +65,9 @@ export default {
       var start_date = this.data[0].date;
       var end_date = this.data[this.data.length - 1].date;
       var submit_max_value = Math.max.apply(
-        null,
-        this.data.map(function (item) {
-          return item[knowledge];
+        Math,
+        data.map(function (item) {
+          return item[1];
         })
       );
 
@@ -88,7 +77,7 @@ export default {
         })
       );
 
-      this.submitOption = {
+      const option = {
         title: {
           text: "提交次数",
           left: "center",
@@ -99,8 +88,8 @@ export default {
           },
         },
         calendar: {
-          top: 40,
-          left: 50,
+          top: "20%",
+          left: "center",
           range: [start_date, end_date],
           cellSize: [18, 18],
           splitLine: {
@@ -131,7 +120,7 @@ export default {
         visualMap: {
           min: 0,
           max: submit_max_value,
-          calculable: false,
+          calculable: true,
           orient: "horizontal",
           left: 'center',
           bottom: 0,
@@ -139,7 +128,7 @@ export default {
             color: ["rgba(0, 255, 0, 0.0)", "rgba(0, 255, 0, 0.8)"],
           },
           outOfRange: {
-            color: ["rgba(0, 0, 0, 0.0)"],
+            color: ["rgba(0, 255, 0, 0.0)", "rgba(0, 255, 0, 0.0)"],
           },
           textStyle: {
             color: "white",
@@ -148,13 +137,11 @@ export default {
         series: {
           type: "heatmap",
           coordinateSystem: "calendar",
-          data: data.map(function (item) {
-            return [item[0], item[1]];
-          }),
+          data: data,
           emphasis: {
             itemStyle: {
               shadowBlur: 10,
-              shadowColor: "rgba(0, 0, 0, 0.5)",
+              shadowColor: "rgba(255, 255, 255, 1)",
             },
           },
         },
@@ -172,7 +159,7 @@ export default {
         },
       };
 
-      this.submitChart.setOption(this.submitOption);
+      option && submitChart.setOption(option);
     },
   },
 };

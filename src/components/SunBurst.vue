@@ -146,12 +146,16 @@ export default {
             
             myChart.on('click',(params)=>{
                 if(params.data.children==undefined){
-                    console.log(params.data.old_name);
+                    //console.log(params.data.old_name);
                     let subknowledge=params.data.old_name;
                     let knowledge=subknowledge.split("_")[0];
-                    console.log("knowledge")
+                    //console.log("knowledge")
                     this.changeLineGraphs(knowledge,subknowledge);
                 }
+                if(params.data.old_name!=undefined)
+                    this.$emit('changeDateHeatMap',params.data.old_name);
+                else
+                    this.$emit('changeDateHeatMap',"total");
             })
         },
         changeLineGraphs(knowledge,subknowledge){

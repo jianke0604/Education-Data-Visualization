@@ -57,6 +57,16 @@
                 </Viewbox>
                 </div>
             </div>
+            <div class="container">
+                <div class="box" style="width:30%">
+                    <Viewbox
+                        title="题目难度与正确率"
+                        :boxb="true"
+                    >
+                    <Diff />
+                </Viewbox>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -72,7 +82,6 @@
         <SunBurst/>
     </div>
     <div>
-        <Diff />
     </div>
     <div>
         <Error />

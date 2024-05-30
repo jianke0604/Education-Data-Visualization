@@ -1,5 +1,5 @@
 <template>
-  <div id="diff" style="height: 400px; width: 50%"></div>
+  <div id="diff" style="height: 80%; width: 100%%"></div>
 </template>
 
 <script>
@@ -92,15 +92,19 @@ export default {
           textBaseline: "middle",
           top: (idx + 0.5) * 100 / knowledge_names.length + "%",
           text: name,
+          textStyle: {
+            fontSize: 13,
+            color: "white",
+          },
         });
         singleAxis.push({
-          left: 150,
+          left: "20%",
           type: "value",
           boundaryGap: false,
           min: 0,
           max: 1,
-          top: (idx * 100) / knowledge_names.length + "%",
-          height: (100 / knowledge_names.length - 5) + "%",
+          top: (idx * 100) / knowledge_names.length + 3 + "%",
+          height: (100 / knowledge_names.length - 10) + "%",
           axisLabel: {
             interval: 0,
           },

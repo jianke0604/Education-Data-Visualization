@@ -40,12 +40,20 @@
                 </div>
             </div>
             <div class="container">
-                <div class="box" style="width:40%">
+                <div class="box" style="width:50%">
                     <Viewbox
                         title="学生复习题目数量与正确率"
                         :boxb="true"
                     >
                     <EChartsScatterPlot />
+                </Viewbox>
+                </div>
+                <div class="box" style="width:50%">
+                    <Viewbox
+                        title="学习集中度与正确率关系"
+                        :boxb="true"
+                    >
+                    <JZD />
                 </Viewbox>
                 </div>
             </div>
@@ -81,6 +89,7 @@ import SunBurst from './SunBurst.vue';
 import Diff from './question_difficulty.vue';
 import Error from './t4_error.vue';
 import EChartsScatterPlot from './EChartsScatterPlot.vue';
+import JZD from './jizhongdu.vue';
 export default {
     components: {
     Header,
@@ -91,7 +100,8 @@ export default {
     SunBurst,
     Diff,
     Error,
-    EChartsScatterPlot
+    EChartsScatterPlot,
+    JZD
 },
     data() {
         return {

@@ -22,11 +22,13 @@
                 
             </div>
             <div class="container">
-                <div class="box">
+                <div class="box" style="width:40%">
                     <Viewbox
-                        title="测试子标题"
+                        title="三维学生画像"
                         :boxb="true"
-                    />
+                    >
+                    <ECharts3D />
+                </Viewbox>
                 </div>
                 <div class="box" style="width:60%;">
                     <Viewbox
@@ -37,16 +39,25 @@
                 </Viewbox>
                 </div>
             </div>
-            
+            <div class="container">
+                <div class="box" style="width:40%">
+                    <Viewbox
+                        title="学生复习题目数量与正确率"
+                        :boxb="true"
+                    >
+                    <EChartsScatterPlot />
+                </Viewbox>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div>
+    <!-- <div>
        
     </div>
     <div style="width: 100%; height: 600px;">
     <ECharts3D />
-    </div>
+    </div> -->
     <div>
     </div>
     <div id="sb_container" style="width: 100%; height: 600px;">
@@ -69,6 +80,7 @@ import DateHeatMap from './DateHeatMap.vue';
 import SunBurst from './SunBurst.vue';
 import Diff from './question_difficulty.vue';
 import Error from './t4_error.vue';
+import EChartsScatterPlot from './EChartsScatterPlot.vue';
 export default {
     components: {
     Header,
@@ -78,7 +90,8 @@ export default {
     DateHeatMap,
     SunBurst,
     Diff,
-    Error
+    Error,
+    EChartsScatterPlot
 },
     data() {
         return {
@@ -99,8 +112,8 @@ export default {
 <style>
 .bgpage{
     background: url(src/assets/true.png);
-    height: 90vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
 }
 .container {
     display: flex; /* 将容器设置为 flex 容器 */

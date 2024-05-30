@@ -1,5 +1,5 @@
 <template>
-  <div id="main" style="height: 100%"></div>
+  <div id="main" style="height: 100%; width:100%"></div>
 </template>
 
 <script>
@@ -8,6 +8,14 @@ import { Scatter3DChart } from 'echarts-gl/charts';
 import { TooltipComponent, VisualMapComponent } from 'echarts/components';
 import { CanvasRenderer } from 'echarts/renderers';
 import { Grid3DComponent } from 'echarts-gl/components';
+
+const customTheme = {
+  backgroundColor: 'rgb(12, 28, 48)',
+  // 你可以在这里添加更多的自定义样式
+};
+
+echarts.registerTheme('customTheme', customTheme);
+
 export default {
   name: 'ECharts3D',
   mounted() {
@@ -24,7 +32,7 @@ export default {
       ]);
 
       var chartDom = document.getElementById('main');
-      var myChart = echarts.init(chartDom, 'dark');
+      var myChart = echarts.init(chartDom, 'customTheme');
       var option;
 
       var schema = [

@@ -78,10 +78,10 @@ def add_date():
 def group_by_date():
     global date_dict
     for date, group in merged_dataframe.groupby('date'):
-        mapping = {0: 'midnight', 1: 'day', 2: 'night'}
-        correct_cnt = [0 for _ in range(3)]
-        try_cnt = [0 for _ in range(3)]
-        title_dict = [{} for _ in range(3)]
+        mapping = {0: 'midnight', 1: 'morning', 2: 'afternoon', 3: "night"}
+        correct_cnt = [0 for _ in range(4)]
+        try_cnt = [0 for _ in range(4)]
+        title_dict = [{} for _ in range(4)]
         for _, row in group.iterrows():
             time = row['minute']
             hour, _ = time.split(':')
@@ -89,10 +89,12 @@ def group_by_date():
             cur_section = None
             if hour >= 0 and hour < 6:
                 cur_section = 0
-            elif hour >= 6 and hour < 18:
+            elif hour >= 6 and hour < 12:
                 cur_section = 1
-            else:
+            elif hour >= 12 and hour < 18:
                 cur_section = 2
+            else:
+                cur_section = 3
 
             try_cnt[cur_section] += 1
             
@@ -103,22 +105,22 @@ def group_by_date():
             else:
                 title_dict[cur_section][row['title_ID']] = 1
         
-        max_title = [max(title_dict[i], key=title_dict[i].get) if title_dict[i] else None for i in range(3)]
-        knowledge_dict = [{} for _ in range(3)]
-        for i in range(3):
+        max_title = [max(title_dict[i], key=title_dict[i].get) if title_dict[i] else None for i in range(4)]
+        knowledge_dict = [{} for _ in range(4)]
+        for i in range(4):
             for title in title_dict[i]:
                 knowledge = title_to_knowledge[title]
                 if knowledge in knowledge_dict[i]:
                     knowledge_dict[i][knowledge] += 1
                 else:
                     knowledge_dict[i][knowledge] = 1
-        max_knowledge = [max(knowledge_dict[i], key=knowledge_dict[i].get) if knowledge_dict[i] else None for i in range(3)]
+        max_knowledge = [max(knowledge_dict[i], key=knowledge_dict[i].get) if knowledge_dict[i] else None for i in range(4)]
 
         date_dict[date] = [[mapping[i], correct_cnt[i] / try_cnt[i], correct_cnt[i], try_cnt[i], max_knowledge[i], max_title[i]] \
-                            if max_title[i] else [mapping[i], 0, 0, 0, None, None] for i in range(3)]
+                            if max_title[i] else [mapping[i], 0, 0, 0, None, None] for i in range(4)]
         # date_arr.append([[date.year, date.month, date.day, mapping[i], correct_cnt[i] / try_cnt[i], correct_cnt[i], try_cnt[i], max_knowledge[i], max_title[i]] \
         #                    if max_title[i] else [date.year, date.month, date.day, mapping[i], 0, 0, 0, None, None] for i in range(3)])
-        for i in range(3):
+        for i in range(4):
             if not max_title[i]:
                 date_arr.append([date.year, date.month, date.day, 0, 0, 0, 'None', 'None', mapping[i]])
             else:

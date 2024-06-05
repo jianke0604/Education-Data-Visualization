@@ -1,5 +1,5 @@
 <template>
-  <div id="main" style="height: 100%; width:100%"></div>
+  <div id="main" style="height:80%; width:100%"></div>
 </template>
 
 <script>
@@ -140,18 +140,18 @@ export default {
                   color: '#fff'
                 }
               },
-              {
-                bottom: 10,
-                calculable: true,
-                dimension: 1,
-                max: max.symbolSize,
-                inRange: {
-                  symbolSize: [10, 40]
-                },
-                textStyle: {
-                  color: '#fff'
-                }
-              }
+              // {
+              //   bottom: 10,
+              //   calculable: true,
+              //   dimension: 1,
+              //   max: max.symbolSize,
+              //   inRange: {
+              //     symbolSize: [10, 40]
+              //   },
+              //   textStyle: {
+              //     color: '#fff'
+              //   }
+              // }
             ],
             xAxis3D: {
               name: 'Total Answers',

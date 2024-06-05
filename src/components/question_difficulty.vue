@@ -1,5 +1,5 @@
 <template>
-  <div id="diff" style="height: 80%; width: 100%%"></div>
+  <div id="diff" style="height: 80%; width: 100%"></div>
 </template>
 
 <script>

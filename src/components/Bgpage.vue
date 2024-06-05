@@ -24,6 +24,23 @@
             <div class="container">
                 <div class="box" style="width:40%">
                     <Viewbox
+                        title="题目难度与正确率"
+                        :boxb="true"
+                    >
+                    <Diff />
+                </Viewbox>
+                </div>
+                <div class="box" style="width:60%">
+                    <Viewbox
+                        title="学生通过题目与正确率明细"
+                        :boxb="true"
+                    >
+                    </Viewbox>
+                </div>
+            </div>
+            <div class="container">
+                <div class="box" style="width:40%">
+                    <Viewbox
                         title="三维学生画像"
                         :boxb="true"
                     >
@@ -57,16 +74,6 @@
                 </Viewbox>
                 </div>
             </div>
-            <div class="container">
-                <div class="box" style="width:30%">
-                    <Viewbox
-                        title="题目难度与正确率"
-                        :boxb="true"
-                    >
-                    <Diff />
-                </Viewbox>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -76,7 +83,7 @@
     <div style="width: 100%; height: 600px;">
     <ECharts3D />
     </div> -->
-    <div>
+    <!-- <div>
     </div>
     <div id="sb_container" style="width: 100%; height: 600px;">
         <SunBurst/>
@@ -85,7 +92,7 @@
     </div>
     <div>
         <Error />
-    </div>
+    </div> -->
 </template>
 
 <script>

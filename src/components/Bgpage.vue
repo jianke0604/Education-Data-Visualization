@@ -35,6 +35,7 @@
                         title="学生通过题目与正确率明细"
                         :boxb="true"
                     >
+                    <TGL />
                     </Viewbox>
                 </div>
             </div>
@@ -106,6 +107,7 @@ import Diff from './question_difficulty.vue';
 import Error from './t4_error.vue';
 import EChartsScatterPlot from './EChartsScatterPlot.vue';
 import JZD from './jizhongdu.vue';
+import TGL from './TGL.vue';
 export default {
     components: {
     Header,
@@ -117,7 +119,8 @@ export default {
     Diff,
     Error,
     EChartsScatterPlot,
-    JZD
+    JZD,
+    TGL
 },
     data() {
         return {

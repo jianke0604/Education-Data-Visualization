@@ -9,8 +9,6 @@ export default {
   name: "Diff",
   data() {
     return {
-      difficultyChart: null,
-      difficultyOption: null,
       knowledges: {},
       subknowledges: {},
       data: {},
@@ -18,7 +16,6 @@ export default {
     };
   },
   mounted() {
-    this.difficultyChart = echarts.init(document.getElementById("diff"));
     fetch("../../data/Data_Titleinfo.csv")
       .then(response => response.text())
       .then(data => {
@@ -79,6 +76,7 @@ export default {
     },
 
     draw() {
+      var difficultyChart = echarts.init(document.getElementById("diff"));
       var self = this;
       // 单轴散点图
       var data = this.data;
@@ -122,7 +120,16 @@ export default {
         });
       });
 
-      this.difficultyOption = {
+      var option = {
+        color: ['rgba(102, 102, 255, 1 )',
+                        'rgba( 51, 153, 255, 1 )',
+                        'rgba(102, 255, 255, 1 )',
+                        'rgba(0, 153, 204, 1 )',
+                        'rgba(0, 204, 204, 1 )',
+                        'rgba(102, 255, 102, 1 )',
+                        'rgba(153, 255, 153, 1 )',
+                        'rgba(255, 255, 102, 1 )',
+                ],
         title: title,
         tooltip: {
           position: "top",
@@ -143,7 +150,7 @@ export default {
         series: series,
       };
 
-      this.difficultyChart.setOption(this.difficultyOption);
+      option && difficultyChart.setOption(option);
     },
   },
 };

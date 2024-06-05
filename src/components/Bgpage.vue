@@ -5,7 +5,7 @@
             <div class="container">
                 <div class="box" style="width:40%;">
                     <Viewbox
-                        title="日期热力图"
+                        title="提交次数日期热力图"
                         :boxb="true"
                     >
                         <DateHeatMap ref="dateHeatMap"/>

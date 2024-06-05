@@ -132,8 +132,6 @@ export default {
                     '#00fea8',
                     '#00ff0d',
                     '#f5f811',
-                    '#f09a09',
-                    '#fe0300'
                   ]
                 },
                 textStyle: {

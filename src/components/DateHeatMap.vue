@@ -78,15 +78,6 @@ export default {
       );
 
       const option = {
-        title: {
-          text: "提交次数",
-          left: "center",
-          top: 0,
-          textStyle: {
-            color: "white",
-            fontSize: 20,
-          },
-        },
         calendar: {
           top: "20%",
           left: "center",

@@ -125,18 +125,13 @@ export default {
                     name: '凌晨',
                     type: 'scatter',
                     itemStyle: {
-                        normal: {
-                        opacity: 0.8
-                        // color: function (param) {
-                        //     console.log("Pass rate is : ", param.value[1]);
-                        //         return getColorForValue(param.value[1] * 100, minVal, maxVal);
-                        //     }
-                        }
+                        opacity: 0.5,
+                        color: 'rgb(0, 204, 0)'
                     },
                     symbolSize: function (val) {
 						var level = this.zoomEnd - this.zoomStart;
 						console.log(level, "in symbolSize");
-                        return Math.sqrt(val[3] / 50) * 20;
+                        return Math.sqrt(val[3] / 50) * 7;
                     },
                     data: data1
                 },
@@ -144,12 +139,11 @@ export default {
                     name: '白天',
                     type: 'scatter',
                     itemStyle: {
-                        normal: {
-                        opacity: 0.8
-                        }
+                        opacity: 0.5,
+                        color: 'rgb(255, 255, 102)'
                     },
                     symbolSize: function (val) {
-                        return Math.sqrt(val[3] / 50) * 10;
+                        return Math.sqrt(val[3] / 50) * 7;
                     },
                     data: data2
                 },
@@ -157,12 +151,11 @@ export default {
                     name: '傍晚',
                     type: 'scatter',
                     itemStyle: {
-                        normal: {
-                        opacity: 0.8
-                        }
+                        opacity: 0.5,
+                        color: 'rgb(0, 204, 204)'
                     },
                     symbolSize: function (val) {
-                        return Math.sqrt(val[3] / 50) * 10;
+                        return Math.sqrt(val[3] / 50) * 7;
                     },
                     data: data3
                 },
@@ -170,12 +163,11 @@ export default {
 					name: '夜晚',
 					type: 'scatter',
 					itemStyle: {
-						normal: {
-						opacity: 0.8
-						}
+						opacity: 0.5,
+                        color: 'rgb(0, 51, 204)'
 					},
 					symbolSize: function (val) {
-						return Math.sqrt(val[3] / 50) * 10;
+						return Math.sqrt(val[3] / 50) * 7;
 					},
 					data: data4
 				}

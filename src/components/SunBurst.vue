@@ -99,7 +99,15 @@ export default {
             this.loadOtherData();
             var myChart = echarts.init(document.getElementById('sb_main'));
             var option = {
-                
+                color: ['rgba(0, 255, 255, 1 )',
+                        'rgba( 51, 153, 255, 1 )',
+                        'rgba(102, 255, 255, 1 )',
+                        'rgba(0, 153, 204, 1 )',
+                        'rgba(0, 204, 204, 1 )',
+                        'rgba(102, 255, 102, 1 )',
+                        'rgba(153, 255, 153, 1 )',
+                        'rgba(255, 255, 102, 1 )',
+                ],
                 series: {
                     type: 'sunburst',
                     // emphasis: {
@@ -111,12 +119,20 @@ export default {
                     focus: 'ancestor'
                     },
                     levels: [
-                    {},
                     {
-                        r0: '15%',
-                        r: '45%',
                         itemStyle: {
-                        borderWidth: 2
+                            borderWidth: 2,
+                            borderColor: 'rgba(0, 0, 0, 0.8)',
+                        }
+                    },
+                    {
+                        r0: '20%',
+                        r: '50%',
+                        itemStyle: {
+                        borderWidth: 2,
+                        borderColor: 'rgba(0, 0, 0, 0.8)',
+                        shadowBlur: 5,
+                        shadowColor: 'rgba(255, 255, 255, 0.5)'
                         },
                         label:{
                             align: 'right',
@@ -126,8 +142,8 @@ export default {
                     },
                     
                     {
-                        r0: '45%',
-                        r: '62%',
+                        r0: '55%',
+                        r: '65%',
                         label: {
                             position: 'outside',
                             padding: 3,
@@ -135,7 +151,8 @@ export default {
                             fontSize:10,
                         },
                         itemStyle: {
-                        borderWidth: 3
+                        borderWidth: 2,
+                        borderColor: 'rgba(0, 0, 0, 0.8)'
                         }
                     }
                     ]
@@ -197,7 +214,21 @@ export default {
                     name: "子知识点"+(knowledge[0].toUpperCase())+(subknowledge.replace(knowledge+"_","")[0].toUpperCase()),
                     type: 'line',
                     stack: 'Total',
-                    data: this.otherData["knowledges"][knowledge]["sub_knowledges"][subknowledge]["participants"]
+                    data: this.otherData["knowledges"][knowledge]["sub_knowledges"][subknowledge]["participants"],
+                    areaStyle: {
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                        offset: 0,
+                        color: 'rgba(51, 102, 255, 0.8)'
+                        }, {
+                        offset: 0.8,
+                        color: 'rgba(51, 102, 255, 0.0)'
+                        }, {
+                        offset: 1,
+                        color: 'rgba(51, 102, 255, 0.0)'
+                        }]),
+                        shadowColor: 'rgba(51, 102, 255, 0.5)',
+                        shadowBlur: 10
+                    }
                     }
                 ]
                 
@@ -219,7 +250,7 @@ export default {
                 legend: {
                     data: ['全部题目', "子知识点"+(knowledge[0].toUpperCase())+(subknowledge.replace(knowledge+"_","")[0].toUpperCase()), "知识点"+(knowledge[0].toUpperCase())],
                     textStyle: {
-                        color: '#00ff00', // 正常状态下的图例颜色，例如蓝色
+                        color: '#ffffff', // 正常状态下的图例颜色，例如蓝色
                         fontSize: 10 // 可选，设置字体大小
                     },
                     inactiveColor: '#999999' ,
@@ -245,19 +276,65 @@ export default {
                     name: '全部题目',
                     type: 'line',
                     
-                    data: this.otherData["data"]
+                    data: this.otherData["data"],
+                    itemStyle: {
+                        color: 'rgba(0, 102, 255, 0.5)'
+                    },
+                    areaStyle: {
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                        offset: 0,
+                        color: 'rgba(0, 102, 255, 0.5)'
+                        }, {
+                        offset: 0.8,
+                        color: 'rgba(0, 102, 255, 0.1)'
+                        }, {
+                        offset: 1,
+                        color: 'rgba(0, 102, 255, 0.0)'
+                        }]),
+                    }
                     },
                     {
                     name: "子知识点"+(knowledge[0].toUpperCase())+(subknowledge.replace(knowledge+"_","")[0].toUpperCase()),
                     type: 'line',
                     
-                    data: this.otherData["knowledges"][knowledge]["sub_knowledges"][subknowledge]["data"]
+                    data: this.otherData["knowledges"][knowledge]["sub_knowledges"][subknowledge]["data"],
+                    itemStyle: {
+                        color: 'rgba(0, 255, 255, 0.5)'
+                    },
+                    areaStyle: {
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                        offset: 0,
+                        color: 'rgba(0, 255, 255, 0.5)'
+                        }, {
+                        offset: 0.8,
+                        color: 'rgba(0, 255, 255, 0.1)'
+                        }, {
+                        offset: 1,
+                        color: 'rgba(0, 255, 255, 0.0)'
+                        }]),
+                    }
                     },
                     {
                     name: "知识点"+(knowledge[0].toUpperCase()),
                     type: 'line',
                     
-                    data: this.otherData["knowledges"][knowledge]["data"]
+                    data: this.otherData["knowledges"][knowledge]["data"],
+                    itemStyle: {
+                        color: 'rgba(0, 255, 0, 0.5)'
+                    },
+                    areaStyle: {
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                        offset: 0,
+                        color: 'rgba(0, 255, 0, 0.5)'
+                        }, {
+                        offset: 0.8,
+                        color: 'rgba(0, 255, 0, 0.1)'
+                        }, {
+                        offset: 1,
+                        color: 'rgba(0, 255, 0, 0.0)'
+                        
+                        }]),
+                    }
                     },
                 ]
                 };
@@ -312,7 +389,7 @@ export default {
                     name: 'Nothing',
                     type: 'line',
                     stack: 'Total',
-                    data: []
+                    data: [],
                     }
                 ]
                 }
@@ -352,10 +429,25 @@ export default {
                         name: '全部题目',
                         type: 'line',
                         stack: 'Total',
-                        data: this.otherData['data']
+                        data: this.otherData['data'],
+                        itemStyle: {
+                            color: 'rgba(0, 102, 255, 0.5)'
                         },
-                        
-                        
+                        areaStyle: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                            offset: 0,
+                            color: 'rgba(0, 102, 255, 0.5)'
+                            }, {
+                            offset: 0.8,
+                            color: 'rgba(0, 102, 255, 0.1)'
+                            }, {
+                            offset: 1,
+                            color: 'rgba(0, 102, 255, 0.0)'
+                            }], false),
+                            shadowColor: 'rgba(255, 255, 255, 0.5)',
+                            shadowBlur: 10
+                        },
+                    }   
                     ]
                 };
             this.myChart1.setOption(option1);

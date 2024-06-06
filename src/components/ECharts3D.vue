@@ -39,7 +39,8 @@ export default {
         { name: 'id', index: 0 },
         { name: 'total_answers', index: 1 },
         { name: 'correct_rate', index: 2 },
-        { name: 'average_time', index: 3 }
+        { name: 'average_time', index: 3 },
+        { name: 'most_common_method', index: 4 }
       ];
 
       var fieldIndices = schema.reduce(function (obj, item) {
@@ -93,7 +94,7 @@ export default {
         };
       }
 
-      fetch('../../data/student_statistics.json')
+      fetch('../../data/student_statistics1.json')
         .then(response => response.json())
         .then(data => {
           var processedData = Object.keys(data).map(id => {
@@ -102,7 +103,8 @@ export default {
               id,
               item.total_answers,
               item.correct_rate,
-              parseTimeToSeconds(item.average_time)
+              parseTimeToSeconds(item.average_time),
+              item.most_common_method
             ];
           });
 
@@ -116,7 +118,10 @@ export default {
                 return `ID: ${params.value[3]}<br>
                         Total Answers: ${params.value[0]}<br>
                         Correct Rate: ${params.value[1]}<br>
-                        Peak Time: ${formatSecondsToTime(params.value[2])}`;
+                        Peak Time: ${formatSecondsToTime(params.value[2])}<br>
+                        Most Common Method: <br>
+                        ${params.value[4]}
+                        `;
               }
             },
             visualMap: [
@@ -191,7 +196,9 @@ export default {
                   'total_answers',
                   'correct_rate',
                   'average_time',
-                  'id' // 添加id到dimensions
+                  'id',
+                  'most_common_method',
+                  // 添加id到dimensions
                   // 'correct_rate',
                   // 'total_answers'
                 ],
@@ -200,7 +207,8 @@ export default {
                     item[fieldIndices['total_answers']],
                     item[fieldIndices['correct_rate']],
                     item[fieldIndices['average_time']],
-                    item[fieldIndices['id']] // 添加id到data
+                    item[fieldIndices['id']], // 添加id到data
+                    item[fieldIndices['most_common_method']]
                     // item[fieldIndices['correct_rate']],
                     // item[fieldIndices['total_answers']]
                   ];

@@ -1,5 +1,5 @@
 <template>
-  <div id="main" style="height: 100%"></div>
+  <div id="main" style="height:80%; width:100%"></div>
 </template>
 
 <script>
@@ -8,6 +8,14 @@ import { Scatter3DChart } from 'echarts-gl/charts';
 import { TooltipComponent, VisualMapComponent } from 'echarts/components';
 import { CanvasRenderer } from 'echarts/renderers';
 import { Grid3DComponent } from 'echarts-gl/components';
+
+
+const customTheme = {
+  backgroundColor: 'rgb(12, 28, 48)',
+  // 你可以在这里添加更多的自定义样式
+};
+
+echarts.registerTheme('customTheme', customTheme);
 
 export default {
   name: 'ECharts3D',
@@ -45,7 +53,7 @@ export default {
         xAxis3D: 'total_answers',
         yAxis3D: 'correct_rate',
         zAxis3D: 'average_time_seconds',
-        color: 'most_common_method',
+        color: 'correct_rate',
         symbolSize: 'total_answers'
       };
 

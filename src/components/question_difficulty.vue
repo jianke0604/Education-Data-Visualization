@@ -105,6 +105,7 @@ export default {
           height: (100 / knowledge_names.length - 10) + "%",
           axisLabel: {
             interval: 0,
+            color: "white",
           },
         });
         series.push({

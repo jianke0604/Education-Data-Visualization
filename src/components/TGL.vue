@@ -1,20 +1,27 @@
 <template>
     <form @submit.prevent="handleSubmit">
-        <label for="firstSelect">班级:</label>
+        <label for="firstSelect" style="color: white; margin: 2%;">班级:</label>
         <select id="firstSelect" v-model="selectedCategory" @change="updateSubcategories">
             <option v-for="(name, key) in classes" :key="key" :value="key">
                 {{ key }}
             </option>
         </select>
 
-        <label for="secondSelect">学生:</label>
+        <label for="secondSelect" style="color: white; margin: 2%;">学生:</label>
         <select id="secondSelect" v-model="selectedSubcategory" :disabled="!selectedCategory">
             <option v-for="(name, index) in classes[selectedCategory]" :key="name" :value="name">
                 {{ name }}
             </option>
         </select>
 
-        <input type="submit" value="查询">
+        <input type="submit" value="查询" style="
+                margin: 2%; 
+                padding: 3px; 
+                background-color: rgba(0, 153, 204, 0.8); 
+                color: white; 
+                border-color: transparent;
+                border-radius: 3px;
+                ">
     </form>
     <div id="pics">
         <div id="pic1"></div>
@@ -56,44 +63,110 @@
             var pic1=echarts.init(document.getElementById('pic1'));
             var pic2=echarts.init(document.getElementById('pic2'));
             const option1 = {
-                        title: {
-                            text: '通过率'
-                        },
-                        tooltip: {
-                            trigger: 'axis'
-                        },
-                        xAxis: {
-                            type: 'category',
-                            data: keys
-                        },
-                        yAxis: {
-                            type: 'value'
-                        },
-                        series: [{
-                            data: s_tgl,
-                            type: 'line'
-                        }]
-                    };
-
-                    // 设置选项并渲染图表
-            pic1.setOption(option1);
-            const option2 = {
                 title: {
-                    text: '正确率'
+                    text: '通过率',
+                    textStyle: {
+                        color: "white"
+                    }
                 },
                 tooltip: {
                     trigger: 'axis'
                 },
                 xAxis: {
                     type: 'category',
-                    data: keys
+                    data: keys,
+                    axisLabel: {
+                        textStyle: {
+                            color: 'white'
+                        }
+                    }
                 },
                 yAxis: {
-                    type: 'value'
+                    type: 'value',
+                    axisLabel: {
+                        textStyle: {
+                            color: 'white'
+                        }
+                    }
+                },
+                series: [{
+                    data: s_tgl,
+                    type: 'line',
+                    itemStyle: {
+                        color: 'rgba(0, 153, 153, 0.8)'
+                    },
+                    areaStyle: {
+                        color: {
+                            type: 'linear',
+                            x: 0,
+                            y: 0,
+                            x2: 0,
+                            y2: 1,
+                            colorStops: [{
+                                offset: 0,
+                                color: 'rgba(0, 153, 153, 0.8)' // 0% 处的颜色
+                            }, {
+                                offset: 1,
+                                color: 'rgba(0, 153, 153, 0.0)' // 100% 处的颜色
+                            }],
+                            global: false // 缺省为 false
+                        }
+                    }
+                        }]
+            };
+
+            // 设置选项并渲染图表
+            pic1.setOption(option1);
+            const option2 = {
+                title: {
+                    text: '正确率',
+                    textStyle: {
+                        color: "white"
+                    }
+                },
+                tooltip: {
+                    trigger: 'axis'
+                },
+                xAxis: {
+                    type: 'category',
+                    data: keys,
+                    axisLabel: {
+                        textStyle: {
+                            color: 'white'
+                        }
+                    }
+                },
+                yAxis: {
+                    type: 'value',
+                    axisLabel: {
+                        textStyle: {
+                            color: 'white'
+                        }
+                    }
                 },
                 series: [{
                     data: s_zql,
-                    type: 'line'
+                    type: 'line',
+                    itemStyle: {
+                        color: 'rgba(0, 102, 204, 0.8)'
+                    },
+                    areaStyle: {
+                        color: {
+                            type: 'linear',
+                            x: 0,
+                            y: 0,
+                            x2: 0,
+                            y2: 1,
+                            colorStops: [{
+                                offset: 0,
+                                color: 'rgba(0, 102, 204, 0.8)' // 0% 处的颜色
+                            }, {
+                                offset: 1,
+                                color: 'rgba(0, 102, 204, 0.0)' // 100% 处的颜色
+                            }],
+                            global: false // 缺省为 false
+                        }
+                    }
                 }]
             };
 
@@ -125,6 +198,16 @@
     position: relative;
     z-index: 6666;
   }
+    form {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+        width: 100%;
+        height: 10%;
+        position: absolute;
+        top: 0;
+    }
   #pics {
     display: flex;
     flex-direction: row;
@@ -132,7 +215,7 @@
     align-items: center;
     width: 100%;
     height: 90%;
-
+    margin-top: 2%;
   }
 
   #pic1,#pic2{

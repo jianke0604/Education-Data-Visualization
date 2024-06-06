@@ -79,6 +79,10 @@ export default {
                 }
             },
             yAxis: {
+                name: '正确率',
+                nameTextStyle: {
+                    color: 'white'
+                },
                 type: 'value',
                 min: 'dataMin',
                 max: 'dataMax',

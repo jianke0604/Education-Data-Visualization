@@ -44,10 +44,10 @@ export default {
           if (studentStatistics[id]) {
             let count = inconsistentQuestions[id].count;
             let correctRate = studentStatistics[id].correct_rate;
-            let color = 'blue';
+            let color = 'rgba(0, 102, 204, 0.8)';
 
             if (minCorrectRatePerCount[count].id === id) {
-              color = 'red';
+              color = 'rgba(255, 255, 0, 0.8)';
             }
 
             data.push({
@@ -61,9 +61,6 @@ export default {
         }
 
         option = {
-          title: {
-            text: 'Scatter Plot of Count vs Correct Rate',
-          },
           tooltip: {
             trigger: 'item',
             formatter: function (params) {
@@ -72,11 +69,27 @@ export default {
           },
           xAxis: {
             name: 'Count',
-            type: 'value'
+            nameTextStyle: {
+              color: 'white'
+            },
+            type: 'value',
+            axisLabel: {
+              textStyle: {
+                color: 'white'
+              }
+            }
           },
           yAxis: {
             name: 'Correct Rate',
-            type: 'value'
+            nameTextStyle: {
+              color: 'white'
+            },
+            type: 'value',
+            axisLabel: {
+              textStyle: {
+                color: 'white'
+              }
+            }
           },
           series: [{
             symbolSize: 10,

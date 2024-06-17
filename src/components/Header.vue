@@ -2,7 +2,7 @@
     <div class="header">
         <div class="bg-header">
             <div class="t-title">
-                答题数据可视化平台
+            教育数据可视化平台
             </div>
         </div>
     </div>

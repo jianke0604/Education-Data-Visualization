@@ -22,6 +22,24 @@
                 
             </div>
             <div class="container">
+                <div class="box" style="width:50%">
+                    <Viewbox
+                        title="学生复习题目数量与正确率"
+                        :boxb="true"
+                    >
+                    <EChartsScatterPlot />
+                </Viewbox>
+                </div>
+                <div class="box" style="width:50%">
+                    <Viewbox
+                        title="学习集中度与正确率关系"
+                        :boxb="true"
+                    >
+                    <JZD />
+                </Viewbox>
+                </div>
+            </div>
+            <div class="container">
                 <div class="box" style="width:40%">
                     <Viewbox
                         title="题目难度与正确率"
@@ -54,24 +72,6 @@
                         :boxb="true"
                     >
                     <zoom2D />
-                </Viewbox>
-                </div>
-            </div>
-            <div class="container">
-                <div class="box" style="width:50%">
-                    <Viewbox
-                        title="学生复习题目数量与正确率"
-                        :boxb="true"
-                    >
-                    <EChartsScatterPlot />
-                </Viewbox>
-                </div>
-                <div class="box" style="width:50%">
-                    <Viewbox
-                        title="学习集中度与正确率关系"
-                        :boxb="true"
-                    >
-                    <JZD />
                 </Viewbox>
                 </div>
             </div>

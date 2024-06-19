@@ -77,8 +77,14 @@
                     tooltip: {
                         trigger: 'item',
                         formatter: function (params) {
-                            return 'ID: ' + params.data.id + '<br/>Count: ' + params.data.value[0] + '<br/>Correct Rate: ' + params.data.value[1];
+                            return 'ID: ' + params.data.id + '<br/>集中度: ' + params.data.value[0] + '<br/>正确率: ' + params.data.value[1];
                         }
+                    },
+                    grid: {
+                    left: '3%',
+                    right: '7%',
+                    bottom: '5%',
+                    containLabel: true
                     },
                     xAxis: {
                         name: '集中度',
